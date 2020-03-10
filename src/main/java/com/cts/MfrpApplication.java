@@ -13,6 +13,4 @@ public class MfrpApplication {
 		SpringApplication.run(MfrpApplication.class, args);
 	}
 
-	
-
 }

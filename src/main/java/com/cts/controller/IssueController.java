@@ -106,6 +106,16 @@ public class IssueController {
 	@GetMapping("issueUpdatePage")
 	public String issueUpdatePage(int id,Model m) {
 		
+		List<CategoryBean> cbean = cdao.findAll();
+		
+		List<String> clist = new ArrayList<String>();
+		
+		
+		for(CategoryBean cb:cbean) {
+			clist.add(cb.getCategory());
+		}
+		
+		m.addAttribute("categoryList", clist);
 		
 		Optional<RaiseIssueBean> opt = rdao.findById(id);
 		

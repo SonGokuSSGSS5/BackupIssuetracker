@@ -15,6 +15,7 @@
 
 <h2><a href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a></h2>
 
+<h2><a href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a></h2>
 
 </body>
 </html>

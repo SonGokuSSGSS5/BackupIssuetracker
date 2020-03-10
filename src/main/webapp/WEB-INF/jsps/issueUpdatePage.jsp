@@ -19,8 +19,12 @@
 	Id	<f:input path="id" readonly="true" placeholder="Id "/><br><br>
 	
 	
-	Category	<f:input path="category" readonly="true" placeholder="Category "/><br><br>
-	
+	Category(Please Change it If you Surely Sense that it is from a totally different topic)		<f:select path="category" class="un ">
+
+			<option disabled selected value>Choose Category</option>
+			<f:options items="${categoryList }" />
+		</f:select>
+		<br><br>
 	
 	Topic	<f:input path="topic" readonly="true" placeholder="Topic "/><br><br>
 	
