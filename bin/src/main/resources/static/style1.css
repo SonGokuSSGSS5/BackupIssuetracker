@@ -1,0 +1,276 @@
+@charset "ISO-8859-1";
+
+
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Dummy devices (replace them with your own or something else entirely!)
+ */
+
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color: #333;
+  border-radius: 21px;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5;
+}
+
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden { overflow: hidden; }
+
+
+ body {
+        background-color: #000000;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    
+    .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 600px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    }
+    
+    .sign {
+        padding-top: 40px;
+        color: #ffffff;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    }
+    
+    .centered{
+    	text-align:center
+    }
+    
+    
+    .un {
+    width: 30%;
+    color: #000000;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+    .rd {
+    width: 30%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+    
+    form.form1 {
+        padding-top: 40px;
+    }
+    
+    .pass {
+            width: 30%;
+    color: #000000;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: #FFFFFF;
+    padding: 10px 20px;
+    border: 2px;
+    border-radius: 180px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+    
+   
+    .un:focus, .pass:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+        
+    }
+    
+    .submit {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: rgba(0,0,0,0.5);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    .register{
+    	cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: rgba(0,0,0,0.5);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    
+    }
+    
+    
+    .signin{
+    background-image:url("image1.png");
+    height: 100%;
+    text-align:center;
+    margin-top:-0.6%;
+    }
+    
+    .about{
+    background-image:url("image2.jpg");
+    height: 100%;
+    text-align:center;
+    vertical-align: top;
+    margin-top:-0.6%;
+    }
+    
+    .adminsign{
+    background-image:url("image3.jpg");
+    height: 100%;
+    text-align:center;
+    vertical-align: top;
+    margin-top:-0.6%;
+    }
+    
+    .forgot {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #ffffff;
+        padding-top: 15px;
+
+    }
+    .links {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #BDC1F5;
+        padding-top: 5px;
+    }
+    
+    
+    a {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #BDC1F5;
+        text-decoration: none;
+    }
+    
+    p {
+    	font-family: 'Ubuntu', sans-serif;
+    	margin-top: 10px;
+    	color: #FFFFFF;
+    }
+    
+    .error {
+    	font-family: 'Ubuntu', sans-serif;
+    	margin-top: 5px;
+    	color: #DE0C13;
+    	font-size:20px;
+    }
+    
+    h2 {
+    	font-family: 'Ubuntu', sans-serif;
+    	margin-top: 10px;
+    	color: #D11818;
+    	text-align:center;
+    }
+    
+    ::placeholder { 
+  	color: black;
+  	opacity: 1; 
+	}
+    
+    @media (max-width: 600px) {
+        .main {
+            border-radius: 0px;
+        }
+        
+        
