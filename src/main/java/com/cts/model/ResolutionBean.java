@@ -32,6 +32,13 @@ public class ResolutionBean {
 	
 	private String repId;
 	
+	public ResolutionBean(String resolution, String repId) {
+		super();
+		this.resolution = resolution;
+		this.repId = repId;
+	}
+
+
 	private boolean notificationFlag=false;
 	
 	

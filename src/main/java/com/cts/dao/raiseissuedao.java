@@ -23,6 +23,8 @@ public interface raiseissuedao extends JpaRepository<RaiseIssueBean	, Integer>{
 	@Query("select rs from RaiseIssueBean rs where rs.category=:cat and (rs.status=:status or rs.status='Active(viewed by Mod)') ")
 	public List<RaiseIssueBean> findByCategoryANDStatus(String cat,String status);
 	
+	@Query("select rs from RaiseIssueBean rs where rs.id=:id")
+	public RaiseIssueBean findIssueById(int id);
 	
 	
 }

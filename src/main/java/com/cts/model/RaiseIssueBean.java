@@ -130,6 +130,13 @@ public class RaiseIssueBean {
 		this.description = description;
 		this.status="Active";
 	}
+
+	@Override
+	public String toString() {
+		return "RaiseIssueBean [id=" + id + ", category=" + category + ", topic=" + topic + ", description="
+				+ description + ", status=" + status + ", askedby=" + askedby + ", timestamp=" + timestamp
+				+ ", resolutions=" + resolutions + "]";
+	}
 	
 	
 	

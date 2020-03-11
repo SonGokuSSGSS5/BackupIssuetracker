@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cts.dao.CategoryDao;
+import com.cts.dao.ResolutionDao;
 import com.cts.dao.raiseissuedao;
 import com.cts.model.CategoryBean;
+import com.cts.model.CategoryRepBean;
 import com.cts.model.RaiseIssueBean;
+import com.cts.model.ResolutionBean;
 import com.cts.model.UserBean;
 
 import javax.servlet.http.HttpSession;
@@ -33,6 +36,9 @@ public class IssueController {
 	
 	@Autowired
 	private CategoryDao cdao;
+	
+	@Autowired
+	private ResolutionDao resdao;
 	
 	@GetMapping("/RaiseIssue")
 	public String RaiseIssue(@ModelAttribute("RaiseIssueBean")RaiseIssueBean raiseissue,String uid,Model m) {
@@ -95,13 +101,7 @@ public class IssueController {
 	}
 	
 	
-	@GetMapping("/showIssuePage")
-	public String showIssuePage(String cid,Model m) {
-		
-		m.addAttribute("name",	cid);
-		
-		return "showIssuePage";
-	}
+
 	
 	@GetMapping("issueUpdatePage")
 	public String issueUpdatePage(int id,Model m) {

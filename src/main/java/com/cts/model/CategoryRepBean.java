@@ -102,5 +102,14 @@ public class CategoryRepBean {
 	public CategoryRepBean() {
 
 	}
+
+	@Override
+	public String toString() {
+		return "CategoryRepBean [firstname=" + firstname + ", lastname=" + lastname + ", dob=" + dob + ", gender="
+				+ gender + ", contactno=" + contactno + ", categoryrepid=" + categoryrepid + ", category=" + category
+				+ ", password=" + password + "]";
+	}
+	
+	
 	
 }

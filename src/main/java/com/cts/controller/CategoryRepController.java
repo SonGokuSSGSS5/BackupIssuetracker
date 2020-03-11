@@ -27,6 +27,7 @@ import com.cts.model.CategoryBean;
 import com.cts.model.CategoryRepBean;
 import com.cts.model.LoginBean;
 import com.cts.model.RaiseIssueBean;
+import com.cts.model.ResolutionBean;
 
 
 
@@ -152,6 +153,37 @@ public class CategoryRepController {
 		m.addAttribute("categoryList", ribi);
 		
 		return "viewIssues";
+	}
+	
+	@GetMapping("/showIssuePage")
+	public String showIssuePage(@ModelAttribute("resolutionBean")ResolutionBean resolutionBean ,int cid,Model m,HttpSession session) {
+		
+		RaiseIssueBean opt = ridao.findIssueById(cid);
+		
+		System.out.println(opt);
+		
+		CategoryRepBean crb = (CategoryRepBean)session.getAttribute("rep");
+		
+		System.out.println("CategoryBou==================" + crb);
+		
+		m.addAttribute("rep", crb);
+		
+		m.addAttribute("issue",	opt);
+		
+		List<ResolutionBean> lrb  = rdao.findResolutionByIssueId(cid);
+		
+		if(lrb.isEmpty()) {
+			System.out.println("Empty List man ********************************");
+			m.addAttribute("resolutionList", null);
+		}
+		else
+			m.addAttribute("resolutionList", lrb);
+		
+		m.addAttribute("postCheck", null);
+		
+		
+			
+		return "showIssuePage";
 	}
 	
 	@GetMapping("viewActiveIssues")
