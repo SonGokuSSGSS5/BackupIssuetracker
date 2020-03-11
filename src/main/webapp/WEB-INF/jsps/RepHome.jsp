@@ -5,17 +5,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="styleAdminHome.css">
+<title>CategoryRep Home</title>
 </head>
 <body>
-<h1>CategoryRepresentative Login Success!!! Welcome ${rep.categoryrepid} you belong to ${rep.category }</h1>
+
+<nav class="site-header sticky-top py-1">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Product">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="viewIssues?rib=${rep.category}">View Issues </a>
+    <a class="py-2 d-none d-md-inline-block" href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a>
+    <a class="py-2 d-none d-md-inline-block" href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a>
+    <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
+  </div>
+</nav>
 
 
-<h2><a href="viewIssues?rib=${rep.category}">View Issues </a></h2><br><br>
-
-<h2><a href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a></h2>
-
-<h2><a href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a></h2>
+<div class="main">
+<p class="sign">Welcome ${rep.categoryrepid} you belong to ${rep.category }</p>
+</div>
 
 </body>
 </html>
