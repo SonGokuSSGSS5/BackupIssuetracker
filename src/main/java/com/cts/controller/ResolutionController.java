@@ -98,6 +98,8 @@ public class ResolutionController {
 	       
 	       unb.setUser(rib.getAskedby());
 	       
+	       unb.setIssueId(id);
+	       
 	       String Message = "The " + cause + " has posted the resolution to Issue id: " + resolutionBean.getIssueId();
 	       
 	       unb.setMessage(Message);

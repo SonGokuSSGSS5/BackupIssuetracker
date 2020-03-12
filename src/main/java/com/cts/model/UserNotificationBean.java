@@ -21,8 +21,9 @@ public class UserNotificationBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int notificationId;
 	
+	private int issueId;
 	
-	private String Message;
+	private String message;
 	
 	private String User;
 	
@@ -33,6 +34,16 @@ public class UserNotificationBean {
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
+	
+	
+
+	public int getIssueId() {
+		return issueId;
+	}
+
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
+	}
 
 	public int getNotificationId() {
 		return notificationId;
@@ -43,11 +54,11 @@ public class UserNotificationBean {
 	}
 
 	public String getMessage() {
-		return Message;
+		return message;
 	}
 
 	public void setMessage(String message) {
-		Message = message;
+		this.message = message;
 	}
 
 	public String getUser() {
@@ -88,10 +99,11 @@ public class UserNotificationBean {
 
 	@Override
 	public String toString() {
-		return "UserNotificationBean [notificationId=" + notificationId + ", Message=" + Message + ", User=" + User
-				+ ", notificationCause=" + notificationCause + ", click=" + click + ", timestamp=" + timestamp + "]";
+		return "UserNotificationBean [notificationId=" + notificationId + ", issueId=" + issueId + ", message="
+				+ message + ", User=" + User + ", notificationCause=" + notificationCause + ", click=" + click
+				+ ", timestamp=" + timestamp + "]";
 	}
-	
+
 	
 
 }

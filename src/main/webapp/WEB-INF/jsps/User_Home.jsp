@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="styleAdminHome.css">
+<link rel="stylesheet" type="text/css" href="TablePage.css">
 </head>
 <body>
 
@@ -29,6 +31,46 @@
   <br>
   <br>
 <p class="sign">Welcome ${user.userid }</p>
+
+
+<div class="main">
+
+<section>
+  <!--for demo wrap-->
+  <br>
+  <h1>Notifications for you</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+		<th>IssueId</th>
+		<th>Message</th>
+		<th>TimeStamp</th>
+		</tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="1">
+      <tbody>
+        <c:forEach var="cr" items="${messages}">
+		<tr>
+			<th><a href="userViewIssuePage?cid=${cr.issueId}">${cr.issueId }</a></th>
+			
+			<th>${cr.message }</th>
+			
+			<th>${cr.timestamp }</th>
+			
+			
+		</tr>
+</c:forEach>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
 
   
 </div>

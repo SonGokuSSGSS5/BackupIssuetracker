@@ -163,9 +163,15 @@ public class IssueController {
        
        unb.setUser(raiseisssuebean.getAskedby());
        
+       unb.setIssueId(raiseisssuebean.getId());
+       
        String Message = "The " + cause + " has updated the  Issue id: " + raiseisssuebean.getId() +   " status to " + raiseisssuebean.getStatus();
        
+       System.out.println("The Message is sdukvgfj,vgfjbvg");
+       System.out.println(Message);
        unb.setMessage(Message);
+       
+       System.out.println(unb);
        
        undao.save(unb);
        

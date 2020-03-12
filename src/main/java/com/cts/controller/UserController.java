@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -26,6 +27,7 @@ import com.cts.model.LoginBean;
 import com.cts.model.RaiseIssueBean;
 import com.cts.model.ResolutionBean;
 import com.cts.model.UserBean;
+import com.cts.model.UserNotificationBean;
 
 @Controller
 public class UserController {
@@ -49,7 +51,7 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView signIn(@Valid @ModelAttribute("login")LoginBean loginBean,BindingResult br,HttpSession session) {
+	public ModelAndView signIn(@Valid @ModelAttribute("login")LoginBean loginBean,BindingResult br,HttpSession session,Model m) {
 		
 		ModelAndView mv=new ModelAndView("Home", "flag", 1);
 		
@@ -66,7 +68,8 @@ public class UserController {
 			{
 			mv=new ModelAndView("User_Home");
 			session.setAttribute("user", user);
-			List<String> Messages = undao.findMessageByUser(user.getUserid());
+			List<UserNotificationBean> Messages = undao.findMessageByUser(user.getUserid());
+			m.addAttribute("messages", Messages);
 			System.out.println(Messages);
 			}
 		}
@@ -117,9 +120,12 @@ public class UserController {
 		return "index";
 	}
 	
+	@Transactional
 	@GetMapping("/userViewIssuePage")
 	public String userViewIssuePage(@ModelAttribute("resolutionBean")ResolutionBean resolutionBean ,int cid,Model m,HttpSession session) {
 		String uid=((UserBean)session.getAttribute("user")).getUserid();
+		
+		undao.deleteByIssueId(cid);
 		
 		RaiseIssueBean opt = rdao.findIssueById(cid);
 		
