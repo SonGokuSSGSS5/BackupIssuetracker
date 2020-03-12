@@ -97,6 +97,14 @@ body {
         font-size: 100px;
     }
     
+    .sign2 {
+        padding-top: 40px;
+        color: #ffffff;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 50px;
+    }
+    
     #select-button
 	{
 		width: 76%;
