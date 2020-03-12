@@ -26,8 +26,6 @@
     <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
   </div>
 </nav>
-
-	<h1> This is a view Issue page for ${rep.category }</h1>
 	
 <%-- <table border="2" align="center" cellspacing="10"  cellpadding="10">
 
@@ -68,7 +66,7 @@
 <section>
   <!--for demo wrap-->
   <br>
-  <h1>Issues</h1>
+  <h1>Issuessss</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
@@ -86,7 +84,7 @@
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="1">
       <tbody>
-        <c:forEach var="cr" items="${rib}">
+        <c:forEach var="i" items="${categoryList}">
 		<tr>
 			<th><a href="issueUpdatePage?id=${i.id}">${i.id}</a> </th>
 		<th>${i.topic} </th>
@@ -95,7 +93,7 @@
 			
 			
 			<c:choose>
-    		<c:when test="${cr.status == 'Active' }">
+    		<c:when test="${i.status == 'Active' }">
         		<th bgcolor="#017709">${i.status}</th>
     		</c:when>
     		<c:otherwise>

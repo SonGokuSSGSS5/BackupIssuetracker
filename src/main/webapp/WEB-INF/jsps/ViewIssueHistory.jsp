@@ -13,7 +13,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body bgcolor="cyan">
+<body>
 
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
