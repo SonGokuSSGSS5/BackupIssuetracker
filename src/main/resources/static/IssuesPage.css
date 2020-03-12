@@ -120,6 +120,14 @@ body {
         color:#ffffff
     }
     
+    .main2 {
+        background-image:url("image1.png");
+        text-align:center;
+        height: 600px;
+        margin-top:-4%;
+        color:#ffffff
+    }
+    
     .sign {
         padding-top: 40px;
         color: #ffffff;

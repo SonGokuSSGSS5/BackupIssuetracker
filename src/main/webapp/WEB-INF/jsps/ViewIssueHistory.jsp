@@ -88,7 +88,7 @@
       <tbody>
         <c:forEach var="cr" items="${rib}">
 		<tr>
-			<th><a href="showIssuePage?cid=${cr.id}" >${cr.id }</a></th>
+			<th><a href="userViewIssuePage?cid=${cr.id}" >${cr.id }</a></th>
 			
 			<th>${cr.category }</th>
 			

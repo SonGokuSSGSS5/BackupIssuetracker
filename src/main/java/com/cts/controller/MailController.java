@@ -95,7 +95,7 @@ public class MailController {
 	
 	@RequestMapping(value="/userhome",method=RequestMethod.GET)
 	public String userhome() {
-		return "UserHome";
+		return "User_Home";
 	}
 	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
