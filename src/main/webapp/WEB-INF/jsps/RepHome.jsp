@@ -30,7 +30,7 @@
 <br>
 <br>
 <br>
-<p class="sign2">Welcome ${rep.categoryrepid} you belong to ${rep.category }</p>
+<p class="sign2">Welcome ${rep.categoryrepid} ,to the ${rep.category } community!!</p>
 </div>
 
 </body>

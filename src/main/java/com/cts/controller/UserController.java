@@ -27,7 +27,8 @@ public class UserController {
 	private UserDao rd;
 	
 	@RequestMapping(value="/",method=RequestMethod.GET) //load the basic user sign in page
-	public String index(@ModelAttribute("login")LoginBean loginBean) {
+	public String index(@ModelAttribute("login")LoginBean loginBean,HttpSession session) {
+		session.invalidate();
 		return "Home";
 	}
 

@@ -22,7 +22,7 @@
     </a>
     <a class="py-2 d-none d-md-inline-block" href="RaiseIssue">Raise Issue</a>
     <a class="py-2 d-none d-md-inline-block" href="ViewIssueHistory">View Issue History</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Help</a>
+    <a class="py-2 d-none d-md-inline-block" href="help">Help</a>
     <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
   </div>
 </nav>
