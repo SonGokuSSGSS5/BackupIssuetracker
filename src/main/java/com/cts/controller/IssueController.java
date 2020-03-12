@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cts.dao.CategoryDao;
 import com.cts.dao.ResolutionDao;
+import com.cts.dao.UserNotificationDao;
 import com.cts.dao.raiseissuedao;
 import com.cts.model.CategoryBean;
 import com.cts.model.CategoryRepBean;
 import com.cts.model.RaiseIssueBean;
 import com.cts.model.ResolutionBean;
 import com.cts.model.UserBean;
+import com.cts.model.UserNotificationBean;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -39,6 +41,9 @@ public class IssueController {
 	
 	@Autowired
 	private ResolutionDao resdao;
+	
+	@Autowired
+	private UserNotificationDao undao;
 	
 	@GetMapping("/RaiseIssue")
 	public String RaiseIssue(@ModelAttribute("RaiseIssueBean")RaiseIssueBean raiseissue,String uid,Model m) {
@@ -133,7 +138,7 @@ public class IssueController {
 	}
 	
 	@PostMapping("updateIssueStatus")
-	public String updateIssueStatus(@ModelAttribute("raiseissuebean")RaiseIssueBean raiseisssuebean) {
+	public String updateIssueStatus(@ModelAttribute("raiseissuebean")RaiseIssueBean raiseisssuebean,HttpSession session) {
 		
 		System.out.println(raiseisssuebean);
 		
@@ -147,10 +152,23 @@ public class IssueController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	       
 		raiseisssuebean.setTimestamp(d1);
 		rdao.save(raiseisssuebean);
 		
+       String cause =((CategoryRepBean)session.getAttribute("rep")).getCategoryrepid();
+       
+       UserNotificationBean unb = new UserNotificationBean();
+       
+       unb.setNotificationCause(cause);
+       
+       unb.setUser(raiseisssuebean.getAskedby());
+       
+       String Message = "The " + cause + " has updated the  Issue id: " + raiseisssuebean.getId() +   " status to " + raiseisssuebean.getStatus();
+       
+       unb.setMessage(Message);
+       
+       undao.save(unb);
+       
 		return "IssueSuccess";
 	}
 	

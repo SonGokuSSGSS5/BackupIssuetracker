@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cts.dao.ResolutionDao;
 import com.cts.dao.UserDao;
+import com.cts.dao.UserNotificationDao;
 import com.cts.dao.raiseissuedao;
 import com.cts.model.LoginBean;
 import com.cts.model.RaiseIssueBean;
@@ -38,6 +39,9 @@ public class UserController {
 	@Autowired
 	private ResolutionDao resdao;
 	
+	@Autowired
+	private UserNotificationDao undao;
+	
 	@RequestMapping(value="/",method=RequestMethod.GET) //load the basic user sign in page
 	public String index(@ModelAttribute("login")LoginBean loginBean,HttpSession session) {
 		session.invalidate();
@@ -48,6 +52,8 @@ public class UserController {
 	public ModelAndView signIn(@Valid @ModelAttribute("login")LoginBean loginBean,BindingResult br,HttpSession session) {
 		
 		ModelAndView mv=new ModelAndView("Home", "flag", 1);
+		
+	
 
 		if(br.hasErrors()) {
 			mv=new ModelAndView("Home");
@@ -60,9 +66,11 @@ public class UserController {
 			{
 			mv=new ModelAndView("User_Home");
 			session.setAttribute("user", user);
+			List<String> Messages = undao.findMessageByUser(user.getUserid());
+			System.out.println(Messages);
 			}
 		}
-			
+		
 		return mv;
 	}
 	
@@ -116,12 +124,6 @@ public class UserController {
 		RaiseIssueBean opt = rdao.findIssueById(cid);
 		
 		m.addAttribute("issue",	opt);
-
-//		
-//		for(RaiseIssueBean rb: rib)
-//		System.out.println(rb);
-//		
-//		m.addAttribute("rib", rib);
 		
 		System.out.println(opt);
 		

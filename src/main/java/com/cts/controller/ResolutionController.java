@@ -2,6 +2,7 @@ package com.cts.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,11 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cts.dao.CategoryDao;
 import com.cts.dao.ResolutionDao;
+import com.cts.dao.UserNotificationDao;
 import com.cts.dao.raiseissuedao;
 import com.cts.model.CategoryBean;
 import com.cts.model.CategoryRepBean;
 import com.cts.model.RaiseIssueBean;
 import com.cts.model.ResolutionBean;
+import com.cts.model.UserNotificationBean;
 
 @Controller
 public class ResolutionController {
@@ -31,6 +34,9 @@ public class ResolutionController {
 	
 	@Autowired
 	private ResolutionDao resdao;
+	
+	@Autowired
+	private UserNotificationDao undao;
 	
 	@GetMapping("/updateWorklogIssues")
 	public String worklogUpdate(String rib,String uid,Model m) {
@@ -68,7 +74,7 @@ public class ResolutionController {
 		
 		m.addAttribute("issue",	opt);
 		
-		m.addAttribute("postCheck", "Your Post Has Been Successfully");
+		m.addAttribute("postCheck", "You have Posted Successfully");
 
 		List<ResolutionBean> lrb  = resdao.findResolutionByIssueId(id);
 		
@@ -78,6 +84,26 @@ public class ResolutionController {
 		}
 		else
 			m.addAttribute("resolutionList", lrb);
+		
+		
+		  Optional<RaiseIssueBean> orib = rdao.findById(id);
+		  
+		  RaiseIssueBean rib = orib.get();
+		
+		  String cause =((CategoryRepBean)session.getAttribute("rep")).getCategoryrepid();
+	       
+	       UserNotificationBean unb = new UserNotificationBean();
+	       
+	       unb.setNotificationCause(cause);
+	       
+	       unb.setUser(rib.getAskedby());
+	       
+	       String Message = "The " + cause + " has posted the resolution to Issue id: " + resolutionBean.getIssueId();
+	       
+	       unb.setMessage(Message);
+	       
+	       undao.save(unb);
+		
 		
 		return "showIssuePage";
 	}
