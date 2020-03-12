@@ -140,6 +140,5 @@ public class UserController {
 		return "userViewIssuePage";
 	}
 	
-//	@GetMapping("/showIssueUser")
 	
 }
