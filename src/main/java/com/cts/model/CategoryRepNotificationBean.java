@@ -2,6 +2,7 @@ package com.cts.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity
 @Table(name="repnotification")
 public class CategoryRepNotificationBean {
 	
