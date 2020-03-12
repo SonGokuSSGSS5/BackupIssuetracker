@@ -31,7 +31,7 @@
 <br>
 <br>
 <br>
-<h1>Issue</h1>
+<h1>Issue ID : ${issue.id } &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Topic :  ${issue.topic } &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Status :  ${issue.status }</h1>
 <div class="card shadow1">
 		  <h2>Name: ${issue.askedby }</h2>
 		  <h5>${issue.timestamp}</h5>

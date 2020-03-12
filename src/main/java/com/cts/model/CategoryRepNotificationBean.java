@@ -21,7 +21,16 @@ public class CategoryRepNotificationBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int notificationId;
 	
+	private int issueId;
 	
+	public int getIssueId() {
+		return issueId;
+	}
+
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
+	}
+
 	private String Message;
 	
 	private String CategoryRep;
@@ -92,6 +101,14 @@ public class CategoryRepNotificationBean {
 
 	public CategoryRepNotificationBean() {
 		super();
+	}
+
+	public CategoryRepNotificationBean(int issueId, String message, String categoryRep, String notificationCause) {
+		super();
+		this.issueId = issueId;
+		Message = message;
+		CategoryRep = categoryRep;
+		this.notificationCause = notificationCause;
 	}
 	
 	

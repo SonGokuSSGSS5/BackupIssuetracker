@@ -38,6 +38,21 @@ public class ResolutionBean {
 		this.repId = repId;
 	}
 
+	
+
+
+
+	public ResolutionBean(int issueId, String resolution, String repId, boolean notificationFlag) {
+		super();
+		this.issueId = issueId;
+		this.resolution = resolution;
+		this.repId = repId;
+		this.notificationFlag = notificationFlag;
+	}
+
+
+
+
 
 	private boolean notificationFlag=false;
 	

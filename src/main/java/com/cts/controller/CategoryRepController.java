@@ -21,13 +21,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cts.dao.CategoryDao;
 import com.cts.dao.CategoryRepDao;
+import com.cts.dao.CategoryRepNotificationDao;
 import com.cts.dao.ResolutionDao;
 import com.cts.dao.raiseissuedao;
 import com.cts.model.CategoryBean;
 import com.cts.model.CategoryRepBean;
+import com.cts.model.CategoryRepNotificationBean;
 import com.cts.model.LoginBean;
 import com.cts.model.RaiseIssueBean;
 import com.cts.model.ResolutionBean;
+import com.cts.model.UserNotificationBean;
 
 
 
@@ -45,6 +48,9 @@ public class CategoryRepController {
 	
 	@Autowired
 	private raiseissuedao ridao;
+	
+	@Autowired
+	private CategoryRepNotificationDao crndao;
 	
 	@RequestMapping(value="/RegisterCategory",method=RequestMethod.GET) // category registration page
 	public String registerCategoryRep(@ModelAttribute("categoryRep") CategoryRepBean cb,Model m) {
@@ -119,7 +125,7 @@ public class CategoryRepController {
 	}
 	
 	@PostMapping("/loginrep")
-	public ModelAndView signInRep(@Valid @ModelAttribute("login")LoginBean loginBean,BindingResult br,HttpSession session) {
+	public ModelAndView signInRep(@Valid @ModelAttribute("login")LoginBean loginBean,BindingResult br,HttpSession session,Model m) {
 		
 		ModelAndView mv=new ModelAndView("Login_Rep", "flag", 1);
 
@@ -134,6 +140,9 @@ public class CategoryRepController {
 			{
 			mv=new ModelAndView("RepHome");
 			session.setAttribute("rep", user);
+			List<CategoryRepNotificationBean> Messages = crndao.findMessageByCategoryRepId(user.getCategoryrepid());
+			m.addAttribute("messages", Messages);
+			System.out.println(Messages);
 			}
 		}
 			

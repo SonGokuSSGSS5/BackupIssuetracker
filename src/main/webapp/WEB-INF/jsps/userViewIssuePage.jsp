@@ -32,7 +32,7 @@
 <br>
 <br>
 <br>
-<h1>Issue</h1>
+<h1>Issue ID : ${issue.id } &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Topic :  ${issue.topic } &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Status :  ${issue.status }</h1>
 <div class="card shadow1">
 		  <h2>Name: ${issue.askedby }</h2>
 		  <h5>${issue.timestamp}</h5>
@@ -61,6 +61,33 @@
 		
 		
 		</c:otherwise>
+</c:choose>
+
+<c:choose>
+
+		<c:when test="${issue.status eq 'Completed' }"> 
+				
+				Note:Change Status to Closed if thou are satisfied with the Resolution else "Reopen" the issue to suit your needs 
+				<f:form action="changeStatus?id=${issue.id }" method="post" modelAttribute="RaiseIssueBean">
+					Choose the Status Appropriately : <f:select path="status">
+						<f:options items="${stats}"/>
+					</f:select>
+					<br><br><br>
+					Enter your Comments : <f:textarea path="description"/>
+					<br><br><br>
+					<input type="Submit" value="updateStatus">
+				
+				</f:form>
+		</c:when>
+		
+		<c:when test="${issue.status eq 'Closed' }">
+		
+			----xxxX This Issue Has Been Closed Xxxx---- 
+		</c:when>
+	<c:otherwise>
+		Not Completed yeeeeeeeeeeeeeeeet
+	</c:otherwise>
+
 </c:choose>
 
 </body> 

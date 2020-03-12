@@ -137,6 +137,11 @@ public class RaiseIssueBean {
 				+ description + ", status=" + status + ", askedby=" + askedby + ", timestamp=" + timestamp
 				+ ", resolutions=" + resolutions + "]";
 	}
+
+	public RaiseIssueBean(String status) {
+		super();
+		this.status = status;
+	}
 	
 	
 	

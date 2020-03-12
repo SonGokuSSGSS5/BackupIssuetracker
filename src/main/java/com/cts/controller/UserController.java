@@ -1,5 +1,6 @@
 package com.cts.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cts.dao.CategoryRepDao;
+import com.cts.dao.CategoryRepNotificationDao;
 import com.cts.dao.ResolutionDao;
 import com.cts.dao.UserDao;
 import com.cts.dao.UserNotificationDao;
 import com.cts.dao.raiseissuedao;
+import com.cts.model.CategoryRepNotificationBean;
 import com.cts.model.LoginBean;
 import com.cts.model.RaiseIssueBean;
 import com.cts.model.ResolutionBean;
@@ -36,6 +40,9 @@ public class UserController {
 	private UserDao rd;
 	
 	@Autowired
+	private CategoryRepDao crdao;
+	
+	@Autowired
 	private raiseissuedao rdao;
 	
 	@Autowired
@@ -43,6 +50,9 @@ public class UserController {
 	
 	@Autowired
 	private UserNotificationDao undao;
+	
+	@Autowired
+	private CategoryRepNotificationDao crndao;
 	
 	@RequestMapping(value="/",method=RequestMethod.GET) //load the basic user sign in page
 	public String index(@ModelAttribute("login")LoginBean loginBean,HttpSession session) {
@@ -122,7 +132,7 @@ public class UserController {
 	
 	@Transactional
 	@GetMapping("/userViewIssuePage")
-	public String userViewIssuePage(@ModelAttribute("resolutionBean")ResolutionBean resolutionBean ,int cid,Model m,HttpSession session) {
+	public String userViewIssuePage(@ModelAttribute("RaiseIssueBean")RaiseIssueBean raiseIssueBean ,int cid,Model m,HttpSession session) {
 		String uid=((UserBean)session.getAttribute("user")).getUserid();
 		
 		undao.deleteByIssueId(cid);
@@ -135,9 +145,15 @@ public class UserController {
 		
 		List<ResolutionBean> lrb  = resdao.findResolutionByIssueId(cid);
 
+		List<String> status = new ArrayList<String>();
+		
+		status.add("Active");
+		status.add("Closed");
+		
+		m.addAttribute("stats", status);
 		
 		if(lrb.isEmpty()) {
-			System.out.println("Empty List man ********************************");
+			System.out.println("Empty List ********************************");
 			m.addAttribute("resolutionList", null);
 		}
 		else
@@ -146,6 +162,36 @@ public class UserController {
 		m.addAttribute("user", uid);
 		
 		return "userViewIssuePage";
+	}
+	
+	@PostMapping("/changeStatus")
+	public String changeStatus(@ModelAttribute("RaiseIssueBean")RaiseIssueBean raiseIssueBean,int id,Model m,HttpSession session) {
+		
+		Optional<RaiseIssueBean> opt = rdao.findById(id);
+		
+		RaiseIssueBean rib = opt.get();
+		
+		rib.setStatus(raiseIssueBean.getStatus());
+		
+		System.out.println(rib.getAskedby());
+		
+		ResolutionBean rb = new ResolutionBean(id,raiseIssueBean.getDescription(),rib.getAskedby(),false);
+		
+		String message= " The User" + rib.getAskedby() + " Has Set the Status to " + raiseIssueBean.getStatus();
+		
+		List<String> reps = crdao.findCategoryrepidByCategory(rib.getCategory());
+		
+		System.out.println(reps);
+		
+		for(String name:reps) {
+		CategoryRepNotificationBean crnb = new CategoryRepNotificationBean(id,message,name,rib.getAskedby());
+		crndao.save(crnb);
+		}
+		resdao.save(rb);
+		
+		rdao.save(rib);
+		
+		return "addComments";
 	}
 	
 	
