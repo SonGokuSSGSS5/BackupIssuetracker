@@ -106,7 +106,8 @@ public class ResolutionController {
 	       
 	       undao.save(unb);
 		
-		
+	       //resolutionBean.setResolution("");
+	       
 		return "showIssuePage";
 	}
 }

@@ -70,25 +70,28 @@
 				Note:Change Status to Closed if thou are satisfied with the Resolution else "Reopen" the issue to suit your needs 
 				<f:form action="changeStatus?id=${issue.id }" method="post" modelAttribute="RaiseIssueBean">
 					Choose the Status Appropriately : <f:select path="status">
-						<f:options items="${stats}"/>
+						<f:options class="un " items="${stats}"/>
 					</f:select>
 					<br><br><br>
-					Enter your Comments : <f:textarea path="description"/>
+					Enter your Comments
+					<br> 
+					<f:textarea path="description" rows="20" cols="100" />
 					<br><br><br>
-					<input type="Submit" value="updateStatus">
+					<input class="raise" type="Submit" value="updateStatus">
 				
 				</f:form>
 		</c:when>
 		
 		<c:when test="${issue.status eq 'Closed' }">
 		
-			----xxxX This Issue Has Been Closed Xxxx---- 
+			This Issue Has Been Closed 
 		</c:when>
 	<c:otherwise>
-		Not Completed yeeeeeeeeeeeeeeeet
+		Not Completed
 	</c:otherwise>
 
 </c:choose>
-
+<br>
+<br>
 </body> 
 </html>

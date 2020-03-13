@@ -110,12 +110,12 @@ public class UserController {
 			Optional<UserBean> op= rd.findById(rb.getUserid());
 			if(!op.isPresent()) {
 				
-				System.out.println("No Record Present");
+				
 				rd.save(rb);
 				page="success";
 			}
 			else {
-				System.out.println("WTF");
+				
 				UserBean ub=op.get();
 				br.addError(new FieldError("userid", "userid", ub.getUserid()+" userid aldready exists"));
 				page="Register_User";
@@ -141,13 +141,14 @@ public class UserController {
 		
 		m.addAttribute("issue",	opt);
 		
+		raiseIssueBean.setDescription("");
 		System.out.println(opt);
 		
 		List<ResolutionBean> lrb  = resdao.findResolutionByIssueId(cid);
 
 		List<String> status = new ArrayList<String>();
 		
-		status.add("Active");
+		status.add("Reopen");
 		status.add("Closed");
 		
 		m.addAttribute("stats", status);

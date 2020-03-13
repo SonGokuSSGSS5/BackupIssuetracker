@@ -27,9 +27,6 @@
 <div class="main">
   <br>
   <br>
-  <br>
-  <br>
-  <br>
 <p class="sign">Welcome ${user.userid }</p>
 
 

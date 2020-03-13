@@ -21,7 +21,7 @@
     <a class="py-2 d-none d-md-inline-block" href="viewIssues?rib=${rep.category}">View Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a>
-    <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
+    <a class="py-2 d-none d-md-inline-block" href="/CategoryLogin">Logout</a>
   </div>
 </nav>
 
@@ -29,12 +29,8 @@
 <div class="main">
 <br>
 <br>
-<br>
-<br>
-<p class="sign2">Welcome ${rep.categoryrepid} ,to the ${rep.category } community!!</p>
-</div>
 
-<div class="main">
+<p class="sign">Welcome ${rep.categoryrepid} ,to the ${rep.category } community!!</p>
 
 <section>
   <!--for demo wrap-->
@@ -70,10 +66,6 @@
   </div>
 </section>
 
-</div>
-
-
-  
 </div>
 
 

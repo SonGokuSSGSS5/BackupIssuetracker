@@ -23,43 +23,9 @@
     <a class="py-2 d-none d-md-inline-block" href="viewIssues?rib=${rep.category}">View Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a>
-    <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
+    <a class="py-2 d-none d-md-inline-block" href="/CategoryLogin">Logout</a>
   </div>
 </nav>
-	
-<%-- <table border="2" align="center" cellspacing="10"  cellpadding="10">
-
-	<tr>
-		<th>IssueId</th>
-		<th>Topic</th>
-		<th>Description</th>
-		<th>Status</th>
-		<th>askedBy</th>
-		<th>TimeStamp</th>
-		
-	</tr>
-	
-<c:forEach var="i" items="${categoryList}">
-	
-	<tr>
-		<th><a href="issueUpdatePage?id=${i.id}">${i.id}</a> </th>
-		<th>${i.topic} </th>
-		<th>${i.description} </th>
-		<th>${i.status} </th>
-		<th>${i.askedby} </th>
-		<th>${i.timestamp} </th>
-	
-	
-	</tr>
-	
-	
-
-
-</c:forEach>
-
-</table>	
- --%>
- 
  
  <div class="main">
 
@@ -91,10 +57,18 @@
 		<th>${i.description} </th>
 			
 			
-			
 			<c:choose>
     		<c:when test="${i.status == 'Active' }">
+        		<th bgcolor="#adad13">${i.status}</th>
+    		</c:when>
+    		<c:when test="${i.status == 'Completed' }">
         		<th bgcolor="#017709">${i.status}</th>
+    		</c:when>
+    		<c:when test="${i.status == 'Work in Progress' }">
+        		<th bgcolor="#db8427">${i.status}</th>
+    		</c:when>
+    		<c:when test="${i.status == 'Closed' }">
+        		<th bgcolor="#204a1f">${i.status}</th>
     		</c:when>
     		<c:otherwise>
         		<th>${i.status}</th>

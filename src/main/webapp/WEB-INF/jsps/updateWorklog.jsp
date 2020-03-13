@@ -24,54 +24,9 @@
     <a class="py-2 d-none d-md-inline-block" href="viewIssues?rib=${rep.category}">View Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="viewActiveIssues?rib=${rep.category}">View  Active Issues </a>
     <a class="py-2 d-none d-md-inline-block" href="updateWorklogIssues?rib=${rep.category}&uid=${rep.categoryrepid}">Update Issue Worklog </a>
-    <a class="py-2 d-none d-md-inline-block" href="/#">Logout</a>
+    <a class="py-2 d-none d-md-inline-block" href="/CategoryLogin">Logout</a>
   </div>
 </nav>
-
-<%-- <table border="2" align="center" cellspacing="10"  cellpadding="10">
-
-	<tr>
-		<th>IssueIds</th>
-		<th>CategoryName</th>
-		<th>Topic</th>
-		<th>Description</th>
-		<th>Status</th>
-		<th>TimeStamp</th>
-		
-	</tr>
-
-<c:forEach var="cr" items="${IssueList}">
-
-	<tr>
-			<th><a href="showIssuePage?cid=${cr.id}" >${cr.id }</a></th>
-			
-			<th>${cr.category }</th>
-			
-			<th>${cr.topic }</th>
-			
-			<th>${cr.description }</th>
-			
-			
-			<c:choose>
-    		<c:when test="${cr.status == 'Active' }">
-        		<th bgcolor="#017709">${cr.status }</th>
-    		</c:when>
-    		<c:otherwise>
-        		<th>${cr.status }</th>
-    		</c:otherwise>
-			</c:choose>
-			
-			
-			
-			
-			<th>${cr.timestamp }</th>
-			
-			
-		</tr>
-
-</c:forEach>
-
-</table> --%>
 
 
 <div class="main">
@@ -109,9 +64,19 @@
 			
 			<th>${cr.description }</th>
 						
+			
 			<c:choose>
     		<c:when test="${cr.status == 'Active' }">
+        		<th bgcolor="#adad13">${cr.status }</th>
+    		</c:when>
+    		<c:when test="${cr.status == 'Completed' }">
         		<th bgcolor="#017709">${cr.status }</th>
+    		</c:when>
+    		<c:when test="${cr.status == 'Work in Progress' }">
+        		<th bgcolor="#db8427">${cr.status }</th>
+    		</c:when>
+    		<c:when test="${cr.status == 'Closed' }">
+        		<th bgcolor="#204a1f">${cr.status }</th>
     		</c:when>
     		<c:otherwise>
         		<th>${cr.status }</th>

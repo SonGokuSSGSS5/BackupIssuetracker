@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cts.dao.CategoryDao;
 import com.cts.model.CategoryBean;
+import com.cts.model.UserBean;
 import com.cts.service.CategoryService;
 
 @Controller
@@ -41,8 +43,22 @@ public class CategoryController {
 			return "AddCategory";
 		}
 		
-		catedao.save(cat);
-		return "result";
+		else {
+			Optional<CategoryBean> op= catedao.findById(cat.getCategoryid());
+			if(!op.isPresent()) {
+				
+				catedao.save(cat);
+				return "result";
+			}
+			else {
+				
+				CategoryBean cb=op.get();
+				br.addError(new FieldError("categoryid", "categoryid", cb.getCategoryid()+" Categoryid aldready exists"));
+				return "AddCategory";
+			}
+		}
+		
+		
 	}
 	
 	@RequestMapping(value="/ViewCategory",method=RequestMethod.GET)

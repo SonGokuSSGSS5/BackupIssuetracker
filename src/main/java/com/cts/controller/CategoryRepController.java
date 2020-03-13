@@ -181,6 +181,8 @@ public class CategoryRepController {
 		
 		List<ResolutionBean> lrb  = rdao.findResolutionByIssueId(cid);
 		
+		//resolutionBean.setResolution("");
+		
 		if(lrb.isEmpty()) {
 			System.out.println("Empty List man ********************************");
 			m.addAttribute("resolutionList", null);

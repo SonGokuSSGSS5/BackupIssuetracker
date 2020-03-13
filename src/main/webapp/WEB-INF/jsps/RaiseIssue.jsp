@@ -46,7 +46,7 @@
 
 <f:input class="un " path="topic" placeholder="Topic"/><p><f:errors path="topic"/></p>
 
-<f:input class="un " path="description" placeholder="Issue"/><p><f:errors path="description"/></p>
+<f:textarea class="un " path="description" placeholder="Issue"/><p><f:errors path="description"/></p>
 
 <f:hidden path="askedby" value="${user }"/>
 

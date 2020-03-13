@@ -65,15 +65,9 @@ public class MailController {
 	
 	@Autowired
 	SafeMailSender mailsender;
+		
 	
 	@RequestMapping(value="/help",method=RequestMethod.GET)
-	public String help(Model m) {
-		return "help";
-	}
-	
-	
-	
-	@RequestMapping(value="/mailAdmin",method=RequestMethod.GET)
 	public String issueMail(@ModelAttribute("mailForm")MailFormBean mf,BindingResult br) {
 		return "mailPage";
 	}
